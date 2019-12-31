@@ -1,5 +1,5 @@
+// playingクラスを追加
 function getAction() {
-    // playingクラスを追加
     const getClass = document.getElementsByClassName('key');
     for (let key of getClass) {
         key.classList.add('playing');　　　
@@ -7,13 +7,21 @@ function getAction() {
 
 }
 
-getAction();
+window.addEventListener('keydown', getAction);
 
-    // dataを取得
-    const keyAction = document.querySelectorAll('[data-key="playing"]');
-    console.log(keyAction.dataset);
+// dataを取得
+function keycodeOutput(e) {
+    const keyAction = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    const audioAction = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    console.log(keyAction);
+    console.log(audioAction);
+    
+    function playSound() {
+        audio.play();
+    }
+}
 
-
+window.addEventListener('keydown', keycodeOutput);
 
 
 
